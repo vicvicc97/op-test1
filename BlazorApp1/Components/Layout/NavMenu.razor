@@ -1,0 +1,48 @@
+﻿<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <div class="container px-4" style="max-width: 1200px;">
+
+        <a class="navbar-brand" href="/">
+            <img src="/navLogo.png" alt="navLogo" class="img-fluid" style="height:40px; width:auto;">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto d-flex flex-row align-items-center gap-4">
+                <li class="nav-item">
+                    <NavLink class="nav-link nav-underline" href="/teams">Våra team</NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link nav-underline" href="/contact">Kontakta oss</NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link d-flex align-items-center" href="/cart">
+                        <img src="/kundvagn.png" alt="Cart" style="height:24px; width:auto;" />
+                    </NavLink>
+                </li>
+                <li class="nav-item">
+                    <a href="/profile">
+                        <img src="/Profile.png" alt="Profile" style="height:24px; width:auto;" />
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdownMenuLink"
+                       role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span id="current-language">SE</span>
+                    </a>
+                    <ul class="dropdown-menu language-dropdown p-3" aria-labelledby="navbarDropdownMenuLink">
+                        <li><strong class="dropdown-title">Välj språk</strong></li>
+                        <li class="mt-2 d-flex gap-2">
+                            <button class="lang-btn active" data-lang="SE">Svenska</button>
+                            <button class="lang-btn" data-lang="ENG">English</button>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
