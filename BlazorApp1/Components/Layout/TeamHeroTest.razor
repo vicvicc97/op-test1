@@ -1,0 +1,27 @@
+﻿
+<div class="hero-container position-relative text-center text-white">
+    <!-- Hero background -->
+    <div class="hero position-relative">
+        <img src="@ImageUrl"
+             alt="@AltText"
+             class="img-fluid w-100"
+             style="object-fit: cover; max-height: 450px;" />
+
+        <!-- Dark overlay -->
+        <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></div>
+
+        <!-- Hero heading -->
+        <div class="position-absolute top-50 start-50 translate-middle">
+            <h1 class="fw-bold display-5">@Title</h1>
+            <p class="fw-normal">@Subtitle</p>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public string ImageUrl { get; set; }
+    [Parameter] public string AltText { get; set; } = "Hero image";
+    [Parameter] public string Title { get; set; }
+    [Parameter] public string Subtitle { get; set; }
+
+}

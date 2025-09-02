@@ -1,0 +1,79 @@
+﻿@using System.ComponentModel.DataAnnotations
+
+<div class="container py-5" style="max-width: 700px;">
+    <!-- Title -->
+    <h2 class="fw-bold mb-3">Service booking</h2>
+    <p class="text-muted">
+        Fill in your details below to submit your service booking. We will get back to you
+        promptly with a tailored proposal based on your wishes and needs.
+    </p>
+
+    <!-- Service Info -->
+    <div class="border-bottom pb-3 mb-4">
+        <h5 class="fw-semibold">Cybersecurity & Compliance Team</h5>
+        <div class="d-flex flex-wrap gap-3 mt-2 text-muted">
+            <span><i class="bi bi-geo-alt-fill me-1"></i> Stockholm</span>
+            <span><i class="bi bi-check-circle-fill me-1"></i> From 2025-07-01</span>
+            <span><i class="bi bi-tag-fill me-1"></i> 1.200 kr/h</span>
+        </div>
+    </div>
+
+    <!-- Booking Form -->
+    <EditForm Model="@bookingModel" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+        <!-- Email -->
+        <div class="mb-3">
+            <label for="email" class="form-label fw-semibold">
+                Email address <span class="text-danger">*</span>
+            </label>
+            <InputText id="email" class="form-control" @bind-Value="bookingModel.Email" />
+            <ValidationMessage For="@(() => bookingModel.Email)" />
+        </div>
+
+        <!-- Preferences -->
+        <div class="mb-3">
+            <label for="preferences" class="form-label fw-semibold">
+                Preferences <small class="text-muted">- optional</small>
+            </label>
+            <InputTextArea id="preferences" class="form-control" rows="4" @bind-Value="bookingModel.Preferences" />
+            <div class="form-text">
+                Do you have any specific needs you want us to consider? Please describe them here –
+                the more we know, the better we can tailor our solution.
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-dark px-4 py-2">
+            Book service
+        </button>
+    </EditForm>
+
+    @if (submitted)
+    {
+        <div class="alert alert-success mt-4">
+            ✅ Your booking request has been submitted (not saved to a database in this demo).
+        </div>
+    }
+</div>
+
+@code {
+    private BookingModel bookingModel = new();
+    private bool submitted = false;
+
+    private void HandleValidSubmit()
+    {
+        // Just show confirmation (no DB or API for now)
+        submitted = true;
+    }
+
+    public class BookingModel
+    {
+        [Required(ErrorMessage = "Email is required")]
+        [EmailAddress(ErrorMessage = "Invalid email format")]
+        public string Email { get; set; } = string.Empty;
+
+        public string? Preferences { get; set; }
+    }
+}
